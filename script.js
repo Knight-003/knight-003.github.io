@@ -12,6 +12,7 @@ const players = document.querySelectorAll(".player")
 const score = document.querySelectorAll(".score");
 let currentScore = 0;
 let currentplayer = 0;
+let totalScore = [0, 0];
 
 scoreEl0.textContent = 0;
 scoreEl1.textContent = 0;
@@ -45,7 +46,8 @@ butNew.addEventListener("click", rst);
 
 
 const hld = function () {
-    score[currentplayer].textContent = Number(score[currentplayer].textContent) + currentScore;
+    totalScore[currentplayer] += currentScore;
+    score[currentplayer].textContent = totalScore[currentplayer];
     switchPlayer();
 }
 
