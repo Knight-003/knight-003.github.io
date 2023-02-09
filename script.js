@@ -10,6 +10,9 @@ const current1El = document.getElementById("current--1");
 const currentEl = document.querySelectorAll(".current-score")
 const players = document.querySelectorAll(".player")
 const score = document.querySelectorAll(".score");
+
+
+
 let currentScore = 0;
 let currentplayer = 0;
 let totalScore = [0, 0];
@@ -17,6 +20,9 @@ let totalScore = [0, 0];
 scoreEl0.textContent = 0;
 scoreEl1.textContent = 0;
 diceEl.classList.add("hidden");
+
+
+
 const switchPlayer = function () {
     currentplayer = (currentplayer + 1) % 2;
     console.log(currentplayer)
@@ -42,7 +48,7 @@ const rst = function () {
 
 
 }
-butNew.addEventListener("click", rst);
+
 
 
 const hld = function () {
@@ -52,15 +58,9 @@ const hld = function () {
 }
 
 
-butHold.addEventListener("click", hld);
 
 
-
-
-
-
-
-butRoll.addEventListener("click", function () {
+const diceRoller = function () {
     // generating random number 
     const dice = Math.trunc(Math.random() * 6) + 1;
     // displaying dice 
@@ -79,14 +79,12 @@ butRoll.addEventListener("click", function () {
         switchPlayer();
 
     }
+}
 
 
-
-
-
-
-
-})
+butHold.addEventListener("click", hld);
+butNew.addEventListener("click", rst);
+butRoll.addEventListener("click", diceRoller);
 
 
 
