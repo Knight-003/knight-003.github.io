@@ -1,49 +1,41 @@
-'use strict';
-const scoreEl0 = document.querySelector("#score--0");
-const scoreEl1 = document.getElementById("score--1");//this methode is faster than that of query selector
-const diceEl = document.querySelector(".dice");
-const butNew = document.querySelector(".btn--new");
-const butHold = document.querySelector(".btn--hold");
-const butRoll = document.querySelector(".btn--roll");
-const current0El = document.getElementById("current--0");
-const current1El = document.getElementById("current--1");
-const currentEl = document.querySelectorAll(".current-score")
-const players = document.querySelectorAll(".player")
-const score = document.querySelectorAll(".score");
+`use strict`
+const modeChangerButton = document.getElementById("modechanger");
+const bdy = document.querySelector("body")
+const nav1 = document.getElementById("headNav")
+const nav2 = document.getElementById("mnNav")
+const nav2font = document.querySelectorAll(".fntclr")
+const mrq = document.querySelectorAll(".marrq span")
+// const cardA = document.getElementById("card1")
+const cardA = document.querySelectorAll(".card1")
+const foot = document.getElementById("ftr")
+const fontSizeEl = 11
+const titl = document.getElementById("mdu")
+const voiceMode = document.getElementById("btn-check-outlined")
+const pls = document.getElementById("plsbt")
+const min = document.getElementById("minbt")
+let fontsz = fontSizeEl
+let vMode = "🌚";
+let isdark = false
+titl.style.fontSize = `${fontSizeEl}px`;
+modeChangerButton.textContent = vMode;
+
+
+const increaser = function () {
+
+    fontsz += 1;
+    titl.style.fontSize = `${fontsz}px`;
 
 
 
-let currentScore = 0;
-let currentplayer = 0;
-let totalScore = [0, 0];
 
-scoreEl0.textContent = 0;
-scoreEl1.textContent = 0;
-diceEl.classList.add("hidden");
-
-
-
-const switchPlayer = function () {
-    currentplayer = (currentplayer + 1) % 2;
-    console.log(currentplayer)
-    players[currentplayer].classList.add("player--active");
-    players[((currentplayer + 1) % 2)].classList.remove("player--active");
-    currentEl[0].textContent = 0;
-    currentEl[1].textContent = 0;
-    currentScore = 0;
-    return (currentplayer);
 
 }
-const rst = function () {
-    currentplayer = 0;
-    currentEl[0].textContent = 0;
-    currentEl[1].textContent = 0;
-    currentScore = 0;
-    players[0].classList.add("player--active");
-    players[1].classList.remove("player--active");
-    score[0].textContent = 0;
-    score[1].textContent = 0;
-    diceEl.src = `dice-1.png`;
+const decreaser = function () {
+
+    fontsz -= 1;
+    titl.style.fontSize = `${fontsz}px`;
+
+
 
 
 
@@ -51,40 +43,178 @@ const rst = function () {
 
 
 
-const hld = function () {
-    totalScore[currentplayer] += currentScore;
-    score[currentplayer].textContent = totalScore[currentplayer];
-    switchPlayer();
+
+
+
+
+
+
+
+const dark = function () {
+    vMode = "☀️";
+
+    // body.style.backgroundColor = "black"
+    // mainEl.style.color = "white"
+    // navv.style.backgroundColor = "black"
+    // navv.style.borderBottom = "2px" + " " + "solid" + " " + "white"
+    // drp.style.backgroundColor = "white"
+    // modeChangerButton.textContent = vMode;
+    // isdark = true
+
+    bdy.style.backgroundColor = "black"
+    nav1.style.backgroundColor = "black"
+    nav2.style.backgroundColor = "black"
+
+
+    nav2font[0].style.color = "white"
+    nav2font[1].style.color = "white"
+    nav2font[2].style.color = "white"
+    nav2font[3].style.color = "white"
+    nav2font[4].style.color = "white"
+
+
+
+
+
+    nav2.style.borderBottom = "2px" + " " + "solid" + " " + "white"
+    modeChangerButton.textContent = vMode;
+
+    cardA[0].style.backgroundColor = "black"
+    cardA[0].style.border = "2px" + " " + "solid" + " " + "white"
+    cardA[0].style.color = "white"
+
+    cardA[1].style.backgroundColor = "black"
+    cardA[1].style.border = "2px" + " " + "solid" + " " + "white"
+    cardA[1].style.color = "white"
+
+    cardA[2].style.backgroundColor = "black"
+    cardA[2].style.border = "2px" + " " + "solid" + " " + "white"
+    cardA[2].style.color = "white"
+
+    foot.style.backgroundColor = "black"
+    foot.style.borderTop = "2px" + " " + "solid" + " " + "white"
+
+
+    // mrq[1].style.Color = "white"
+
+
+    modeChangerButton.textContent = vMode;
+
+
+    isdark = true
+
 }
+const light = function () {
+    vMode = "🌚";
+    modeChangerButton.textContent = vMode;
 
 
+    bdy.style.backgroundColor = "white"
+    nav1.style.backgroundColor = "white"
+    nav2.style.backgroundColor = "white"
 
 
-const diceRoller = function () {
-    // generating random number 
-    const dice = Math.trunc(Math.random() * 6) + 1;
-    // displaying dice 
-    diceEl.src = `dice-${dice}.png`;
+    nav2.style.borderBottom = "none"
+    modeChangerButton.textContent = vMode;
 
-    diceEl.classList.remove("hidden");
+    cardA[0].style.backgroundColor = "white"
+    cardA[0].style.border = "1px" + " " + "solid" + " " + "black"
+    cardA[0].style.color = "black"
 
-    if (dice !== 1) {
-        currentScore += dice; // a=a+1
-        currentEl[currentplayer].textContent = currentScore;
+    cardA[1].style.backgroundColor = "white"
+    cardA[1].style.border = "2px" + " " + "solid" + " " + "black"
+    cardA[1].style.color = "black"
+
+    cardA[2].style.backgroundColor = "white"
+    cardA[2].style.border = "2px" + " " + "solid" + " " + "black"
+    cardA[2].style.color = "black"
+
+    nav2font[0].style.color = "black"
+    nav2font[1].style.color = "black"
+    nav2font[2].style.color = "black"
+    nav2font[3].style.color = "black"
+    nav2font[4].style.color = "black"
+
+    foot.style.backgroundColor = "aquamarine"
+    foot.style.borderTop = "none"
+    isdark = false
 
 
+}
+const chk = function () {
+    if (isdark === true) {
+        light()
     } else {
+        dark()
+    }
+
+}
 
 
-        switchPlayer();
+
+
+
+const utterance1 = new SpeechSynthesisUtterance(cardA[1].innerText);
+
+
+
+modeChangerButton.addEventListener("click", chk)
+
+pls.addEventListener("click", increaser)
+min.addEventListener("click", decreaser)
+
+// cardA[1].addEventListener("mouseenter", () => {
+
+
+
+//     window.speechSynthesis.speak(utterance1);
+
+
+// })
+
+
+// cardA[1].addEventListener("mouseout", () => {
+
+
+
+//     window.speechSynthesis.cancel(utterance1);
+
+
+// })
+let speech = new SpeechSynthesisUtterance();
+
+onmouseup = (event) => {
+
+    window.speechSynthesis.cancel();
+    if (window.getSelection) {
+        txt = window.getSelection();
+        console.log(txt.toString().trim());
+
+        if ((txt.toString().trim() !== "") && (voiceMode.checked)) {
+            speech.text = txt; // give text here to speak
+            // Start Speaking
+            window.speechSynthesis.speak(speech);
+        }
 
     }
+
 }
 
+const anchors = document.querySelectorAll("a");
+anchors.forEach((elem) => {
+    elem.onmouseover = function (e) {
 
-butHold.addEventListener("click", hld);
-butNew.addEventListener("click", rst);
-butRoll.addEventListener("click", diceRoller);
+        if (voiceMode.checked) {
+
+
+            var target = e.target ? e.target : e.srcElement;
+            window.speechSynthesis.cancel();
+            speech.text = target.innerText; // give text here to speak
+            // Start Speaking
+            window.speechSynthesis.speak(speech);
+        }
+    };
+});
 
 
 
